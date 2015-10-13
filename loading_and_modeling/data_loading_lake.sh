@@ -1,0 +1,16 @@
+cd Exercise
+cd Datacopy
+cd Hospital_Revised_Flatfiles
+tail -n +2 "Hospital General Information.csv" > "hospitals.csv"
+tail -n +2 "Timely and Effective Care - Hospital.csv" > "effective_care.csv"
+tail -n +2 "Readmissions and Deaths - Hospital.csv" > "readmissions.csv"
+tail -n +2 "Measure Dates.csv" > "measuredates.csv"
+tail -n +2 "hvbp_hcahps_08_06_2015.csv" > "surveys_responses.csv"
+
+scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/effective_care.csv root@ec2-54-173-134-33.compute-1.amazonaws.com:/tmp
+effective_care.csv
+scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/effective_care.csv root@ec2-54-173-134-33.compute-1.amazonaws.com:/usr/w205/hospital_compare
+scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/hospitals.csv root@ec2-54-173-134-33.compute-1.amazonaws.com:/usr/w205/hospital_compare
+scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/measuredates.csv root@ec2-54-173-134-33.compute-1.amazonaws.com:/usr/w205/hospital_compare
+scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/readmissions.csv root@ec2-54-173-134-33.compute-1.amazonaws.com:/usr/w205/hospital_compare
+scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/surveys_responses.csv root@ec2-54-173-134-33.compute-1.amazonaws.com:/usr/w205/hospital_compare
