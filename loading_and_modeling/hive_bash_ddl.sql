@@ -74,3 +74,5 @@ HCAHPS_CONSIST varchar (100))
 row format delimited
 fields terminated by ','
 LOCATION '/data/w205/hospitalcare';
+
+# vi hive_base_ddl.sql
