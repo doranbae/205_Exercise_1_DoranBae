@@ -1,0 +1,26 @@
+Q: What hospitals are models of high-quality care - that is, which hospitals have the most concistently high scores for a variety of procedures?
+
+A: 
+# Top 10 results (Hospital names, Overall score)
+MEMORIAL HOSPITAL	25110.0
+ST JOSEPH HOSPITAL	21668.0
+GOOD SAMARITAN HOSPITAL	21380.0
+MERCY MEDICAL CENTER	19718.0
+MERCY HOSPITAL	19703.0
+ST JOSEPH MEDICAL CENTER	17534.0
+ST MARY'S MEDICAL CENTER	16702.0
+ST MARY MEDICAL CENTER	14455.0
+DOCTORS HOSPITAL	13092.0
+ST MARYS HOSPITAL	12582.0
+
+# Calculation
+In best_hospitals.sql, I wrote a query statement to aggreate scores for each Measure Names (=procedures) from two tables I have made previously. I used 'procedureQualityTable' to get score data, and joined it with hospitalInfoTable to get the names of the hospitals. 
+
+# Justification why this approach is appropriate
+I used "Timely and Effective Care - Hospital.csv" to get scores of variety of proceduers. Each hospital was given a score for a set of procedurs. Hospitals with consistently high score for variety of procedures must have high score if we were to add all the scores for each hospitals. For some procedures in certain hospitals, the score value is unavailable. For the purpose of this investigation, I have assumed that no score means no procedure to measure, which is an indication of poor quality. 
+
+# Why these results support your conclusion
+Memorial Hospital has the highest summed score of 25110.0 This means that Memorial Hospital has most of its procedures measured and scored high.
+
+# Conclusion
+Memorial Hospital has the most consistently high schore for a variety of procedurs.
