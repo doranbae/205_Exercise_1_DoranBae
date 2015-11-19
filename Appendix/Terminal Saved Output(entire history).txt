@@ -1,0 +1,2202 @@
+Last login: Sat Oct 17 18:25:16 on ttys000
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/effective_care.csv root@ec2-54-84-142-229.compute-1.amazonaws.com:/data/w205/hospitalcare
+The authenticity of host 'ec2-54-84-142-229.compute-1.amazonaws.com (54.84.142.229)' can't be established.
+RSA key fingerprint is a8:5d:e8:8d:35:d6:cf:9c:d5:64:45:cd:8b:53:c0:a8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-54-84-142-229.compute-1.amazonaws.com' (RSA) to the list of known hosts.
+effective_care.csv                                                                                                                        100%   58MB   2.7MB/s   00:22    
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/hospitals.csv root@ec2-54-84-142-229.compute-1.amazonaws.com:/data/w205/hospitalcare
+hospitals.csv                                                                                                                             100%  804KB 803.9KB/s   00:00    
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/measuredates.csv root@ec2-54-84-142-229.compute-1.amazonaws.com:/data/w205/hospitalcare
+measuredates.csv                                                                                                                          100%   15KB  15.3KB/s   00:00    
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/readmissions.csv root@ec2-54-84-142-229.compute-1.amazonaws.com:/data/w205/hospitalcare
+readmissions.csv                                                                                                                          100%   19MB   3.2MB/s   00:06    
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/Exercise_1_data/surveys_responses.csv root@ec2-54-84-142-229.compute-1.amazonaws.com:/data/w205/hospitalcare
+surveys_responses.csv                                                                                                                     100% 1307KB   1.3MB/s   00:00    
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/csv-serde.jar root@ec2-54-84-142-229.compute-1.amazonaws.com:/root
+csv-serde.jar                                                                                                                             100%   25KB  24.6KB/s   00:00    
+^[[Aml-20015260:~ Doran$ t
+-bash: t: command not found
+ml-20015260:~ Doran$ scp -i thisKeyPair2.pem /Users/Doran/205_Exercise_1_DoranBae/loading_and_modeling/hive_bash_ddl2.sql root@ec2-54-84-142-229.compute-1.amazonaws.com:/root
+hive_bash_ddl2.sql                                                                                                                        100% 2793     2.7KB/s   00:00    
+ml-20015260:~ Doran$ clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ml-20015260:~ Doran$ ssh -i "thisKeyPair2.pem" root@54.84.142.229
+Last login: Sat Oct 17 09:25:25 2015 from 124.49.22.21
+     ___   _        __   __   ____            __    
+    / _ \ (_)___ _ / /  / /_ / __/____ ___ _ / /___ 
+   / , _// // _ `// _ \/ __/_\ \ / __// _ `// // -_)
+  /_/|_|/_/ \_, //_//_/\__//___/ \__/ \_,_//_/ \__/ 
+           /___/                                                 
+                                              
+Welcome to a virtual machine image brought to you by RightScale!
+
+
+[root@ip-172-31-18-233 ~]# ls
+csv-serde.jar          derby.log           ipython       pgxl-deployment-tools  start-hadoop.sh~  stop-hadoop.sh~  transforming.sql
+dans_bash_history.txt  hive_bash_ddl2.sql  metastore_db  start-hadoop.sh        stop-hadoop.sh    streamparse
+[root@ip-172-31-18-233 ~]# vi hive_bash_ddl2.sql 
+[root@ip-172-31-18-233 ~]# cd /data/w205
+[root@ip-172-31-18-233 w205]# ls
+hospitalcare
+[root@ip-172-31-18-233 w205]# cd hospitalcare/
+[root@ip-172-31-18-233 hospitalcare]# ls
+effective_care.csv  hospitals.csv  measuredates.csv  readmissions.csv  surveys_responses.csv
+[root@ip-172-31-18-233 hospitalcare]# vi effective_care.csv 
+[root@ip-172-31-18-233 hospitalcare]# vi hospitals.csv 
+[root@ip-172-31-18-233 hospitalcare]# vi surveys_responses.csv 
+[root@ip-172-31-18-233 hospitalcare]# cd
+[root@ip-172-31-18-233 ~]# ls
+csv-serde.jar          derby.log           ipython       pgxl-deployment-tools  start-hadoop.sh~  stop-hadoop.sh~  transforming.sql
+dans_bash_history.txt  hive_bash_ddl2.sql  metastore_db  start-hadoop.sh        stop-hadoop.sh    streamparse
+[root@ip-172-31-18-233 ~]# vi hive_bash_ddl2.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./hive_bash_ddl2.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+Exception in thread "main" java.lang.RuntimeException: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:511)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:671)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+Caused by: java.lang.RuntimeException: Unable to instantiate org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient
+	at org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1488)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.<init>(RetryingMetaStoreClient.java:64)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:74)
+	at org.apache.hadoop.hive.ql.metadata.Hive.createMetaStoreClient(Hive.java:2881)
+	at org.apache.hadoop.hive.ql.metadata.Hive.getMSC(Hive.java:2900)
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:492)
+	... 8 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1486)
+	... 13 more
+Caused by: javax.jdo.JDOFatalDataStoreException: Unable to open a test connection to the given database. JDBC url = jdbc:derby:;databaseName=metastore_db;create=true, username = APP. Terminating connection pool (set lazyInit to true if you expect to start your database after your app). Original Exception: ------
+java.sql.SQLException: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:361)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:298)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:631)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:301)
+	at org.datanucleus.NucleusContext.createStoreManagerForProperties(NucleusContext.java:1187)
+	at org.datanucleus.NucleusContext.initialise(NucleusContext.java:356)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.freezeConfiguration(JDOPersistenceManagerFactory.java:775)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.createPersistenceManagerFactory(JDOPersistenceManagerFactory.java:333)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.getPersistenceManagerFactory(JDOPersistenceManagerFactory.java:202)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at javax.jdo.JDOHelper$16.run(JDOHelper.java:1965)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.jdo.JDOHelper.invoke(JDOHelper.java:1960)
+	at javax.jdo.JDOHelper.invokeGetPersistenceManagerFactoryOnImplementation(JDOHelper.java:1166)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:808)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:701)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPMF(ObjectStore.java:390)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPersistenceManager(ObjectStore.java:419)
+	at org.apache.hadoop.hive.metastore.ObjectStore.initialize(ObjectStore.java:314)
+	at org.apache.hadoop.hive.metastore.ObjectStore.setConf(ObjectStore.java:281)
+	at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:73)
+	at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:133)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.<init>(RawStoreProxy.java:56)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.getProxy(RawStoreProxy.java:65)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.newRawStore(HiveMetaStore.java:581)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.getMS(HiveMetaStore.java:559)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.createDefaultDB(HiveMetaStore.java:612)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.init(HiveMetaStore.java:450)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.<init>(RetryingHMSHandler.java:66)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.getProxy(RetryingHMSHandler.java:72)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore.newRetryingHMSHandler(HiveMetaStore.java:5628)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.<init>(HiveMetaStoreClient.java:196)
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.<init>(SessionHiveMetaStoreClient.java:74)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1486)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.<init>(RetryingMetaStoreClient.java:64)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:74)
+	at org.apache.hadoop.hive.ql.metadata.Hive.createMetaStoreClient(Hive.java:2881)
+	at org.apache.hadoop.hive.ql.metadata.Hive.getMSC(Hive.java:2900)
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:492)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:671)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+Caused by: ERROR XJ040: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 72 more
+Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database /root/metastore_db.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.getJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 69 more
+------
+
+NestedThrowables:
+java.sql.SQLException: Unable to open a test connection to the given database. JDBC url = jdbc:derby:;databaseName=metastore_db;create=true, username = APP. Terminating connection pool (set lazyInit to true if you expect to start your database after your app). Original Exception: ------
+java.sql.SQLException: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:361)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:298)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:631)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:301)
+	at org.datanucleus.NucleusContext.createStoreManagerForProperties(NucleusContext.java:1187)
+	at org.datanucleus.NucleusContext.initialise(NucleusContext.java:356)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.freezeConfiguration(JDOPersistenceManagerFactory.java:775)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.createPersistenceManagerFactory(JDOPersistenceManagerFactory.java:333)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.getPersistenceManagerFactory(JDOPersistenceManagerFactory.java:202)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at javax.jdo.JDOHelper$16.run(JDOHelper.java:1965)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.jdo.JDOHelper.invoke(JDOHelper.java:1960)
+	at javax.jdo.JDOHelper.invokeGetPersistenceManagerFactoryOnImplementation(JDOHelper.java:1166)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:808)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:701)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPMF(ObjectStore.java:390)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPersistenceManager(ObjectStore.java:419)
+	at org.apache.hadoop.hive.metastore.ObjectStore.initialize(ObjectStore.java:314)
+	at org.apache.hadoop.hive.metastore.ObjectStore.setConf(ObjectStore.java:281)
+	at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:73)
+	at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:133)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.<init>(RawStoreProxy.java:56)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.getProxy(RawStoreProxy.java:65)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.newRawStore(HiveMetaStore.java:581)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.getMS(HiveMetaStore.java:559)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.createDefaultDB(HiveMetaStore.java:612)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.init(HiveMetaStore.java:450)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.<init>(RetryingHMSHandler.java:66)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.getProxy(RetryingHMSHandler.java:72)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore.newRetryingHMSHandler(HiveMetaStore.java:5628)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.<init>(HiveMetaStoreClient.java:196)
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.<init>(SessionHiveMetaStoreClient.java:74)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1486)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.<init>(RetryingMetaStoreClient.java:64)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:74)
+	at org.apache.hadoop.hive.ql.metadata.Hive.createMetaStoreClient(Hive.java:2881)
+	at org.apache.hadoop.hive.ql.metadata.Hive.getMSC(Hive.java:2900)
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:492)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:671)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+Caused by: ERROR XJ040: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 72 more
+Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database /root/metastore_db.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.getJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 69 more
+------
+
+	at org.datanucleus.api.jdo.NucleusJDOHelper.getJDOExceptionForNucleusException(NucleusJDOHelper.java:436)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.freezeConfiguration(JDOPersistenceManagerFactory.java:788)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.createPersistenceManagerFactory(JDOPersistenceManagerFactory.java:333)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.getPersistenceManagerFactory(JDOPersistenceManagerFactory.java:202)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at javax.jdo.JDOHelper$16.run(JDOHelper.java:1965)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.jdo.JDOHelper.invoke(JDOHelper.java:1960)
+	at javax.jdo.JDOHelper.invokeGetPersistenceManagerFactoryOnImplementation(JDOHelper.java:1166)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:808)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:701)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPMF(ObjectStore.java:390)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPersistenceManager(ObjectStore.java:419)
+	at org.apache.hadoop.hive.metastore.ObjectStore.initialize(ObjectStore.java:314)
+	at org.apache.hadoop.hive.metastore.ObjectStore.setConf(ObjectStore.java:281)
+	at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:73)
+	at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:133)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.<init>(RawStoreProxy.java:56)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.getProxy(RawStoreProxy.java:65)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.newRawStore(HiveMetaStore.java:581)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.getMS(HiveMetaStore.java:559)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.createDefaultDB(HiveMetaStore.java:612)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.init(HiveMetaStore.java:450)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.<init>(RetryingHMSHandler.java:66)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.getProxy(RetryingHMSHandler.java:72)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore.newRetryingHMSHandler(HiveMetaStore.java:5628)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.<init>(HiveMetaStoreClient.java:196)
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.<init>(SessionHiveMetaStoreClient.java:74)
+	... 18 more
+Caused by: java.sql.SQLException: Unable to open a test connection to the given database. JDBC url = jdbc:derby:;databaseName=metastore_db;create=true, username = APP. Terminating connection pool (set lazyInit to true if you expect to start your database after your app). Original Exception: ------
+java.sql.SQLException: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:361)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:298)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:631)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:301)
+	at org.datanucleus.NucleusContext.createStoreManagerForProperties(NucleusContext.java:1187)
+	at org.datanucleus.NucleusContext.initialise(NucleusContext.java:356)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.freezeConfiguration(JDOPersistenceManagerFactory.java:775)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.createPersistenceManagerFactory(JDOPersistenceManagerFactory.java:333)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.getPersistenceManagerFactory(JDOPersistenceManagerFactory.java:202)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at javax.jdo.JDOHelper$16.run(JDOHelper.java:1965)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.jdo.JDOHelper.invoke(JDOHelper.java:1960)
+	at javax.jdo.JDOHelper.invokeGetPersistenceManagerFactoryOnImplementation(JDOHelper.java:1166)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:808)
+	at javax.jdo.JDOHelper.getPersistenceManagerFactory(JDOHelper.java:701)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPMF(ObjectStore.java:390)
+	at org.apache.hadoop.hive.metastore.ObjectStore.getPersistenceManager(ObjectStore.java:419)
+	at org.apache.hadoop.hive.metastore.ObjectStore.initialize(ObjectStore.java:314)
+	at org.apache.hadoop.hive.metastore.ObjectStore.setConf(ObjectStore.java:281)
+	at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:73)
+	at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:133)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.<init>(RawStoreProxy.java:56)
+	at org.apache.hadoop.hive.metastore.RawStoreProxy.getProxy(RawStoreProxy.java:65)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.newRawStore(HiveMetaStore.java:581)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.getMS(HiveMetaStore.java:559)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.createDefaultDB(HiveMetaStore.java:612)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore$HMSHandler.init(HiveMetaStore.java:450)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.<init>(RetryingHMSHandler.java:66)
+	at org.apache.hadoop.hive.metastore.RetryingHMSHandler.getProxy(RetryingHMSHandler.java:72)
+	at org.apache.hadoop.hive.metastore.HiveMetaStore.newRetryingHMSHandler(HiveMetaStore.java:5628)
+	at org.apache.hadoop.hive.metastore.HiveMetaStoreClient.<init>(HiveMetaStoreClient.java:196)
+	at org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.<init>(SessionHiveMetaStoreClient.java:74)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1486)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.<init>(RetryingMetaStoreClient.java:64)
+	at org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:74)
+	at org.apache.hadoop.hive.ql.metadata.Hive.createMetaStoreClient(Hive.java:2881)
+	at org.apache.hadoop.hive.ql.metadata.Hive.getMSC(Hive.java:2900)
+	at org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:492)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:671)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+Caused by: ERROR XJ040: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 72 more
+Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database /root/metastore_db.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.getJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 69 more
+------
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.jolbox.bonecp.PoolUtil.generateSQLException(PoolUtil.java:192)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:422)
+	at com.jolbox.bonecp.BoneCPDataSource.getConnection(BoneCPDataSource.java:120)
+	at org.datanucleus.store.rdbms.ConnectionFactoryImpl$ManagedConnectionImpl.getConnection(ConnectionFactoryImpl.java:501)
+	at org.datanucleus.store.rdbms.RDBMSStoreManager.<init>(RDBMSStoreManager.java:298)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:631)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:301)
+	at org.datanucleus.NucleusContext.createStoreManagerForProperties(NucleusContext.java:1187)
+	at org.datanucleus.NucleusContext.initialise(NucleusContext.java:356)
+	at org.datanucleus.api.jdo.JDOPersistenceManagerFactory.freezeConfiguration(JDOPersistenceManagerFactory.java:775)
+	... 47 more
+Caused by: java.sql.SQLException: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:361)
+	at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+	... 59 more
+Caused by: ERROR XJ040: Failed to start database 'metastore_db' with class loader sun.misc.Launcher$AppClassLoader@2f78743b, see the next exception for details.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 72 more
+Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database /root/metastore_db.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.getJBMSLockOnDB(Unknown Source)
+	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.FileMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 69 more
+[root@ip-172-31-18-233 ~]# hive
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> show tables
+    > ;
+OK
+carequalitytable
+effective_care
+hospitalinfotable
+hospitals
+procedurequalitytable
+quality
+Time taken: 0.509 seconds, Fetched: 6 row(s)
+hive> select * from carequalitytable
+    > limit 10;
+OK
+010001	AL	17
+010005	AL	51
+010006	AL	9
+010007	AL	40
+010008	AL	30
+010011	AL	11
+010012	AL	31
+010016	AL	10
+010019	AL	24
+010021	AL	34
+Time taken: 0.687 seconds, Fetched: 10 row(s)
+hive> select * from hospitalinfotable
+    > limit 10;
+OK
+010001	SOUTHEAST ALABAMA MEDICAL CENTER	1108 ROSS CLARK CIRCLE	AL
+010005	MARSHALL MEDICAL CENTER SOUTH	2505 U S HIGHWAY 431 NORTH	AL
+010006	ELIZA COFFEE MEMORIAL HOSPITAL	205 MARENGO STREET	AL
+010007	MIZELL MEMORIAL HOSPITAL	702 N MAIN ST	AL
+010008	CRENSHAW COMMUNITY HOSPITAL	101 HOSPITAL CIRCLE	AL
+010011	ST VINCENT'S EAST	50 MEDICAL PARK EAST DRIVE	AL
+010012	DEKALB REGIONAL MEDICAL CENTER	200 MED CENTER DRIVE	AL
+010016	SHELBY BAPTIST MEDICAL CENTER	1000 FIRST STREET NORTH	AL
+010018	CALLAHAN EYE HOSPITAL	1720 UNIVERSITY BLVD	AL
+010019	HELEN KELLER MEMORIAL HOSPITAL	1300 SOUTH MONTGOMERY AVENUE	AL
+Time taken: 0.049 seconds, Fetched: 10 row(s)
+hive> select * from procedurequalitytable
+    > limit 10;
+OK
+010001	AMI_10	Statin at Discharge
+010001	AMI_2	Aspirin prescribed at discharge
+010001	AMI_7a	Fibrinolytic Therapy Received Within 30 Minutes Of Hospital Arrival
+010001	AMI_8a	Primary PCI Received Within 90 Minutes of Hospital Arrival
+010001	ED_1b	ED1
+010001	ED_2b	ED2
+010001	EDV	Emergency department volume
+010001	HF_1	Discharge instructions
+010001	HF_2	Evaluation of LVS Function
+010001	HF_3	ACEI or ARB for LVSD
+Time taken: 0.048 seconds, Fetched: 10 row(s)
+hive> quit;
+[root@ip-172-31-18-233 ~]# vi hive_bash_ddl2.sql
+[root@ip-172-31-18-233 ~]# vi hive_bash_ddl2.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./hive_bash_ddl2.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+Added [csv-serde.jar] to class path
+Added resources: [csv-serde.jar]
+OK
+Time taken: 1.893 seconds
+OK
+Time taken: 0.274 seconds
+Loading data to table default.effective_care
+Table default.effective_care stats: [numFiles=0, numRows=0, totalSize=0, rawDataSize=0]
+OK
+Time taken: 1.168 seconds
+OK
+Time taken: 0.111 seconds
+OK
+Time taken: 0.074 seconds
+Loading data to table default.hospitals
+Table default.hospitals stats: [numFiles=0, numRows=0, totalSize=0, rawDataSize=0]
+OK
+Time taken: 0.237 seconds
+OK
+Time taken: 0.115 seconds
+OK
+Time taken: 0.077 seconds
+Loading data to table default.quality
+Table default.quality stats: [numFiles=0, numRows=0, totalSize=0, rawDataSize=0]
+OK
+Time taken: 0.297 seconds
+[root@ip-172-31-18-233 ~]# hive -f ./transforming.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.909 seconds
+Query ID = root_20151017115050_131598de-bd49-47ad-b547-d83ecaa37cd6
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1445073781836_0013, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0013/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0013
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2015-10-17 11:50:30,108 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 11:50:37,655 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.86 sec
+MapReduce Total cumulative CPU time: 2 seconds 860 msec
+Ended Job = job_1445073781836_0013
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/.hive-staging_hive_2015-10-17_11-50-20_565_3272454037539533087-1/-ext-10001
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/carequalitytable
+Table default.carequalitytable stats: [numFiles=1, numRows=3025, totalSize=38698, rawDataSize=35673]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 2.86 sec   HDFS Read: 1346027 HDFS Write: 38783 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 860 msec
+OK
+Time taken: 19.49 seconds
+OK
+Time taken: 0.114 seconds
+Query ID = root_20151017115050_d0f9036c-72f7-47fc-8fa7-8b7a7581fbea
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1445073781836_0014, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0014/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0014
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2015-10-17 11:50:48,069 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 11:50:54,526 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.16 sec
+MapReduce Total cumulative CPU time: 2 seconds 160 msec
+Ended Job = job_1445073781836_0014
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/.hive-staging_hive_2015-10-17_11-50-40_173_4827552726544610410-1/-ext-10001
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/hospitalinfotable
+Table default.hospitalinfotable stats: [numFiles=1, numRows=4803, totalSize=286487, rawDataSize=281684]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 2.16 sec   HDFS Read: 827450 HDFS Write: 286574 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 160 msec
+OK
+Time taken: 15.549 seconds
+OK
+Time taken: 0.088 seconds
+Query ID = root_20151017115050_1a2ba196-a328-45e8-8031-43d48ba10e97
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1445073781836_0015, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0015/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0015
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2015-10-17 11:51:03,487 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 11:51:12,936 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 5.99 sec
+MapReduce Total cumulative CPU time: 5 seconds 990 msec
+Ended Job = job_1445073781836_0015
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/.hive-staging_hive_2015-10-17_11-50-55_814_7049455742565642733-1/-ext-10001
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/procedurequalitytable
+Table default.procedurequalitytable stats: [numFiles=1, numRows=114992, totalSize=6355883, rawDataSize=6240891]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 5.99 sec   HDFS Read: 61186798 HDFS Write: 6355977 SUCCESS
+Total MapReduce CPU Time Spent: 5 seconds 990 msec
+OK
+Time taken: 18.353 seconds
+[root@ip-172-31-18-233 ~]# hive
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> select * from procedurequalitytable
+    > limit 10;
+OK
+010001	Statin at Discharge	98
+010001	Aspirin prescribed at discharge	99
+010001	Primary PCI Received Within 90 Minutes of Hospital Arrival	92
+010001	ED1	284
+010001	ED2	73
+010001	Emergency department volume	High (40,000 - 59,999 patients annually)
+010001	Discharge instructions	86
+010001	Evaluation of LVS Function	100
+010001	ACEI or ARB for LVSD	96
+010001	Immunization for influenza	94
+Time taken: 1.233 seconds, Fetched: 10 row(s)
+hive> quit;
+[root@ip-172-31-18-233 ~]# vi trans
+[root@ip-172-31-18-233 ~]# vi transforming.sql 
+[root@ip-172-31-18-233 ~]# vi best_hospitals
+[root@ip-172-31-18-233 ~]# vi best_hospitals 
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql
+[root@ip-172-31-18-233 ~]# rm best_hospitals
+[root@ip-172-31-18-233 ~]# ls
+best_hospitals.sql  dans_bash_history.txt  hive_base_effective.sql  hive_base_quality.sql  ipython       pgxl-deployment-tools  start-hadoop.sh~  stop-hadoop.sh~  transforming.sql
+csv-serde.jar       derby.log              hive_base_hospitals.sql  hive_bash_ddl2.sql     metastore_db  start-hadoop.sh        stop-hadoop.sh    streamparse
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+NoViableAltException(26@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1025)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:394)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:306)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1111)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1159)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1048)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1038)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:305)
+	at org.apache.hadoop.hive.cli.CliDriver.processReader(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.processFile(CliDriver.java:419)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:708)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 1:0 cannot recognize input near 'OP' 'TABLE' 'best_hospitals'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+NoViableAltException(66@[184:1: tableName : (db= identifier DOT tab= identifier -> ^( TOK_TABNAME $db $tab) |tab= identifier -> ^( TOK_TABNAME $tab) );])
+	at org.antlr.runtime.DFA.noViableAlt(DFA.java:158)
+	at org.antlr.runtime.DFA.predict(DFA.java:116)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_FromClauseParser.tableName(HiveParser_FromClauseParser.java:4683)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.tableName(HiveParser.java:44539)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.dropTableStatement(HiveParser.java:6733)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:2379)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:1586)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1062)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:394)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:306)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1111)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1159)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1048)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1038)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:305)
+	at org.apache.hadoop.hive.cli.CliDriver.processReader(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.processFile(CliDriver.java:419)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:708)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 2:0 cannot recognize input near 'best_hospitals' 'CREATE' 'TABLE' in table name
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.535 seconds
+FAILED: ParseException line 4:4 missing EOF at '(' near 'SUM'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.533 seconds
+FAILED: SemanticException [Error 10002]: Line 3:22 Invalid column reference 'SCORE'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> show tables;
+OK
+carequalitytable
+effective_care
+hospitalinfotable
+hospitals
+procedurequalitytable
+quality
+Time taken: 0.516 seconds, Fetched: 6 row(s)
+hive> describe procedurequalitytable
+    > ;
+OK
+providerid          	string              	                    
+measurename         	string              	                    
+score               	string              	                    
+Time taken: 0.439 seconds, Fetched: 3 row(s)
+hive> quit;
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.536 seconds
+FAILED: SemanticException [Error 10002]: Line 3:23 Invalid column reference 'SCORE'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.54 seconds
+FAILED: SemanticException [Error 10025]: Line 3:21 Expression not in GROUP BY key 'hospitalname'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.547 seconds
+Query ID = root_20151017122626_2e6d93cc-e961-4a09-b26a-1f93be1ea600
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017122626_2e6d93cc-e961-4a09-b26a-1f93be1ea600.log
+2015-10-17 12:26:11	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 12:26:12	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/27ed12c2-152f-4b44-bf1e-bf51453b4c51/hive_2015-10-17_12-26-04_242_7832526862189666323-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 12:26:12	Uploaded 1 File to: file:/tmp/root/27ed12c2-152f-4b44-bf1e-bf51453b4c51/hive_2015-10-17_12-26-04_242_7832526862189666323-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (116095 bytes)
+2015-10-17 12:26:12	End of local task; Time Taken: 1.673 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0016, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0016/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0016
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 12:26:23,396 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 12:26:31,992 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.04 sec
+2015-10-17 12:26:39,420 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 6.4 sec
+MapReduce Total cumulative CPU time: 6 seconds 400 msec
+Ended Job = job_1445073781836_0016
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4497, totalSize=31479, rawDataSize=26982]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 6.4 sec   HDFS Read: 6365700 HDFS Write: 31562 SUCCESS
+Total MapReduce CPU Time Spent: 6 seconds 400 msec
+OK
+Time taken: 36.692 seconds
+OK
+010001
+010005
+010006
+010007
+010008
+010011
+010012
+010016
+010018
+010019
+Time taken: 0.116 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.937 seconds
+FAILED: ParseException line 4:3 missing EOF at '(' near 'SUM'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.536 seconds
+Query ID = root_20151017123030_9b5e75cb-efe1-44dc-9ffc-301205556186
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017123030_9b5e75cb-efe1-44dc-9ffc-301205556186.log
+2015-10-17 12:30:12	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 12:30:14	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/cc2d18ed-d3d8-42ea-ba44-0d4d626c70e5/hive_2015-10-17_12-30-05_614_1299279542051938117-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 12:30:14	Uploaded 1 File to: file:/tmp/root/cc2d18ed-d3d8-42ea-ba44-0d4d626c70e5/hive_2015-10-17_12-30-05_614_1299279542051938117-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (116095 bytes)
+2015-10-17 12:30:14	End of local task; Time Taken: 1.682 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0017, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0017/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0017
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 12:30:24,055 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 12:30:32,682 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.7 sec
+2015-10-17 12:30:40,101 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.35 sec
+MapReduce Total cumulative CPU time: 7 seconds 350 msec
+Ended Job = job_1445073781836_0017
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4497, totalSize=61684, rawDataSize=57187]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.35 sec   HDFS Read: 6366454 HDFS Write: 61767 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 350 msec
+OK
+Time taken: 35.985 seconds
+OK
+010001	3505.0
+010005	3592.0
+010006	3127.0
+010007	2365.0
+010008	764.0
+010011	3451.0
+010012	3215.0
+010016	3408.0
+010018	497.0
+010019	2818.0
+Time taken: 0.08 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 2.01 seconds
+FAILED: SemanticException [Error 10025]: Line 3:20 Expression not in GROUP BY key 'hospitalname'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.543 seconds
+Query ID = root_20151017123737_e1c7ef5b-7f30-4fdd-be68-0e69db580250
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017123737_e1c7ef5b-7f30-4fdd-be68-0e69db580250.log
+2015-10-17 12:37:28	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 12:37:30	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/a51bbc68-539d-4055-a899-970d39a51b77/hive_2015-10-17_12-37-21_453_8492516166624276558-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 12:37:30	Uploaded 1 File to: file:/tmp/root/a51bbc68-539d-4055-a899-970d39a51b77/hive_2015-10-17_12-37-21_453_8492516166624276558-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (262566 bytes)
+2015-10-17 12:37:30	End of local task; Time Taken: 1.822 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0018, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0018/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0018
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 12:37:40,484 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 12:37:49,221 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.64 sec
+2015-10-17 12:37:56,661 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.5 sec
+MapReduce Total cumulative CPU time: 7 seconds 500 msec
+Ended Job = job_1445073781836_0018
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4317, totalSize=157077, rawDataSize=152760]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.5 sec   HDFS Read: 6367403 HDFS Write: 157161 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 500 msec
+OK
+Time taken: 36.678 seconds
+OK
+ HIMA SAN PABLO BAYAMON	1663.0
+ABBEVILLE AREA MEDICAL CENTER	1692.0
+ABBEVILLE GENERAL HOSPITAL	2163.0
+ABBOTT NORTHWESTERN HOSPITAL	3506.0
+ABILENE REGIONAL MEDICAL CENTER	3250.0
+ABINGTON MEMORIAL HOSPITAL	3512.0
+ABRAHAM LINCOLN MEMORIAL HOSPITAL	1944.0
+ABRAZO ARROWHEAD CAMPUS	3104.0
+ABRAZO CENTRAL CAMPUS	3092.0
+ABRAZO MARYVALE CAMPUS	2587.0
+Time taken: 0.053 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.97 seconds
+FAILED: SemanticException [Error 10004]: Line 8:8 Invalid table alias or column reference 'p': (possible column names are: h.hospitalname, _c1)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.537 seconds
+FAILED: ParseException line 8:0 missing EOF at 'GROUP' near 'ASC'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.526 seconds
+FAILED: SemanticException [Error 10004]: Line 8:9 Invalid table alias or column reference 'p': (possible column names are: h.hospitalname, _c1)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.537 seconds
+FAILED: SemanticException [Error 10004]: Line 8:13 Invalid table alias or column reference 'p': (possible column names are: h.hospitalname, _c1)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.543 seconds
+Query ID = root_20151017124343_cc710aae-bae5-4ef8-a6a8-3b22b034f8dc
+Total jobs = 2
+Execution log at: /tmp/root/root_20151017124343_cc710aae-bae5-4ef8-a6a8-3b22b034f8dc.log
+2015-10-17 12:43:33	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 12:43:34	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/f448ea2a-7121-411d-9194-e91df232e0ea/hive_2015-10-17_12-43-26_166_2333927759039058951-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 12:43:34	Uploaded 1 File to: file:/tmp/root/f448ea2a-7121-411d-9194-e91df232e0ea/hive_2015-10-17_12-43-26_166_2333927759039058951-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (262566 bytes)
+2015-10-17 12:43:34	End of local task; Time Taken: 1.733 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0019, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0019/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0019
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 12:43:45,545 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 12:43:53,115 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.31 sec
+2015-10-17 12:44:00,500 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 6.79 sec
+MapReduce Total cumulative CPU time: 6 seconds 790 msec
+Ended Job = job_1445073781836_0019
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0020, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0020/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0020
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+2015-10-17 12:44:08,599 Stage-3 map = 0%,  reduce = 0%
+2015-10-17 12:44:14,930 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.69 sec
+2015-10-17 12:44:22,373 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 3.95 sec
+MapReduce Total cumulative CPU time: 3 seconds 950 msec
+Ended Job = job_1445073781836_0020
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4317, totalSize=157077, rawDataSize=152760]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 6.79 sec   HDFS Read: 6366882 HDFS Write: 238404 SUCCESS
+Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 3.95 sec   HDFS Read: 242753 HDFS Write: 157161 SUCCESS
+Total MapReduce CPU Time Spent: 10 seconds 740 msec
+OK
+Time taken: 57.66 seconds
+OK
+ZUNI COMPREHENSIVE COMMUNITY HEALTH CENTER	784.0
+YUMA REGIONAL MEDICAL CENTER	3456.0
+YUMA DISTRICT HOSPITAL	564.0
+YUKON KUSKOKWIM DELTA REG HOSPITAL	723.0
+YORK HOSPITAL	6548.0
+YORK GENERAL HOSPITAL	1021.0
+YOAKUM COMMUNITY HOSPITAL	286.0
+YAVAPAI REGIONAL MEDICAL CENTER-EAST CAMPUS	2829.0
+YAVAPAI REGIONAL MEDICAL CENTER	3025.0
+YAMPA VALLEY MEDICAL CENTER	1893.0
+Time taken: 0.1 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.975 seconds
+FAILED: SemanticException [Error 10004]: Line 8:9 Invalid table alias or column reference 'score': (possible column names are: h.hospitalname, _c1)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> show tables;
+OK
+carequalitytable
+effective_care
+hospitalinfotable
+hospitals
+procedurequalitytable
+quality
+Time taken: 0.528 seconds, Fetched: 6 row(s)
+hive> quit;
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> show tables;
+OK
+carequalitytable
+effective_care
+hospitalinfotable
+hospitals
+procedurequalitytable
+quality
+Time taken: 0.512 seconds, Fetched: 6 row(s)
+hive> quit;
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.532 seconds
+FAILED: ParseException line 9:0 missing EOF at 'select' near 'hospitalname'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.536 seconds
+Query ID = root_20151017125050_9362a2d2-4116-45bb-8919-c0bbf9d5c738
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017125050_9362a2d2-4116-45bb-8919-c0bbf9d5c738.log
+2015-10-17 12:50:32	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 12:50:34	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/c3e21810-dad0-4e59-8d9a-f85322f8108a/hive_2015-10-17_12-50-25_519_4163654028884617242-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 12:50:34	Uploaded 1 File to: file:/tmp/root/c3e21810-dad0-4e59-8d9a-f85322f8108a/hive_2015-10-17_12-50-25_519_4163654028884617242-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (262566 bytes)
+2015-10-17 12:50:34	End of local task; Time Taken: 1.812 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0021, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0021/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0021
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 12:50:44,743 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 12:50:53,404 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.97 sec
+2015-10-17 12:50:59,726 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.38 sec
+MapReduce Total cumulative CPU time: 7 seconds 380 msec
+Ended Job = job_1445073781836_0021
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4317, totalSize=157077, rawDataSize=152760]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.38 sec   HDFS Read: 6367403 HDFS Write: 157161 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 380 msec
+OK
+Time taken: 35.743 seconds
+OK
+ HIMA SAN PABLO BAYAMON	1663.0
+ABBEVILLE AREA MEDICAL CENTER	1692.0
+ABBEVILLE GENERAL HOSPITAL	2163.0
+ABBOTT NORTHWESTERN HOSPITAL	3506.0
+ABILENE REGIONAL MEDICAL CENTER	3250.0
+ABINGTON MEMORIAL HOSPITAL	3512.0
+ABRAHAM LINCOLN MEMORIAL HOSPITAL	1944.0
+ABRAZO ARROWHEAD CAMPUS	3104.0
+ABRAZO CENTRAL CAMPUS	3092.0
+ABRAZO MARYVALE CAMPUS	2587.0
+Time taken: 0.081 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# hive
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+WARNING: Hive CLI is deprecated and migration to Beeline is recommended.
+hive> show tables;
+OK
+best_hospitals
+carequalitytable
+effective_care
+hospitalinfotable
+hospitals
+procedurequalitytable
+quality
+Time taken: 0.504 seconds, Fetched: 7 row(s)
+hive> describe best_hospitals;
+OK
+hospitalname        	string              	                    
+_c1                 	double              	                    
+Time taken: 0.484 seconds, Fetched: 2 row(s)
+hive> quit;
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.937 seconds
+Query ID = root_20151017125252_d73654ae-23c0-4813-a2ef-5e713d7693cc
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017125252_d73654ae-23c0-4813-a2ef-5e713d7693cc.log
+2015-10-17 12:52:49	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 12:52:50	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/5061af47-df9b-4548-9cd6-68520478f478/hive_2015-10-17_12-52-42_845_792158754359977681-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 12:52:51	Uploaded 1 File to: file:/tmp/root/5061af47-df9b-4548-9cd6-68520478f478/hive_2015-10-17_12-52-42_845_792158754359977681-1/-local-10004/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (262566 bytes)
+2015-10-17 12:52:51	End of local task; Time Taken: 1.717 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0022, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0022/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0022
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 12:53:01,349 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 12:53:09,971 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.79 sec
+2015-10-17 12:53:17,403 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.3 sec
+MapReduce Total cumulative CPU time: 7 seconds 300 msec
+Ended Job = job_1445073781836_0022
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4317, totalSize=157077, rawDataSize=152760]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.3 sec   HDFS Read: 6367399 HDFS Write: 157161 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 300 msec
+OK
+Time taken: 35.925 seconds
+NoViableAltException(178@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1025)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:394)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:306)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1111)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1159)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1048)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1038)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:305)
+	at org.apache.hadoop.hive.cli.CliDriver.processReader(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.processFile(CliDriver.java:419)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:708)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 2:0 cannot recognize input near 'ORDER' 'BY' '_c1'
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+
+
+
+^C[root@ip-172-31-18-233 ~]vi ./best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.951 seconds
+FAILED: ParseException line 8:13 missing \' at 'DESC' near '<EOF>'
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.531 seconds
+MismatchedTokenException(-1!=12)
+	at org.antlr.runtime.BaseRecognizer.recoverFromMismatchedToken(BaseRecognizer.java:617)
+	at org.antlr.runtime.BaseRecognizer.match(BaseRecognizer.java:115)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.charSetStringLiteral(HiveParser_IdentifiersParser.java:6303)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.constant(HiveParser_IdentifiersParser.java:6095)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.atomExpression(HiveParser_IdentifiersParser.java:6684)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceFieldExpression(HiveParser_IdentifiersParser.java:6862)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceUnaryPrefixExpression(HiveParser_IdentifiersParser.java:7247)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceUnarySuffixExpression(HiveParser_IdentifiersParser.java:7307)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceBitwiseXorExpression(HiveParser_IdentifiersParser.java:7491)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceStarExpression(HiveParser_IdentifiersParser.java:7651)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedencePlusExpression(HiveParser_IdentifiersParser.java:7811)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceAmpersandExpression(HiveParser_IdentifiersParser.java:7971)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceBitwiseOrExpression(HiveParser_IdentifiersParser.java:8130)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceEqualExpression(HiveParser_IdentifiersParser.java:8660)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceNotExpression(HiveParser_IdentifiersParser.java:9673)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceAndExpression(HiveParser_IdentifiersParser.java:9792)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.precedenceOrExpression(HiveParser_IdentifiersParser.java:9951)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.expression(HiveParser_IdentifiersParser.java:6567)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.expression(HiveParser.java:44495)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.columnRefOrder(HiveParser.java:38031)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.orderByClause(HiveParser_IdentifiersParser.java:1620)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.orderByClause(HiveParser.java:44547)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.singleSelectStatement(HiveParser.java:41763)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.selectStatement(HiveParser.java:41340)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.selectStatementWithCTE(HiveParser.java:42121)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.createTableStatement(HiveParser.java:5115)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:2364)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:1586)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1062)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:394)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:306)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1111)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1159)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1048)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1038)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:305)
+	at org.apache.hadoop.hive.cli.CliDriver.processReader(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.processFile(CliDriver.java:419)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:708)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 8:12 mismatched input '<EOF>' expecting \' near '_c1' in character string literal
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.525 seconds
+Query ID = root_20151017130101_afcb32de-0ad7-4512-afb1-7e54900e06da
+Total jobs = 2
+Execution log at: /tmp/root/root_20151017130101_afcb32de-0ad7-4512-afb1-7e54900e06da.log
+2015-10-17 01:01:34	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 01:01:36	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/48d8f4b9-d6ca-4d85-867b-52bb64eee782/hive_2015-10-17_13-01-27_735_7916599620634991653-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 01:01:36	Uploaded 1 File to: file:/tmp/root/48d8f4b9-d6ca-4d85-867b-52bb64eee782/hive_2015-10-17_13-01-27_735_7916599620634991653-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (262566 bytes)
+2015-10-17 01:01:36	End of local task; Time Taken: 1.747 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0023, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0023/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0023
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 13:01:46,125 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 13:01:54,822 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.86 sec
+2015-10-17 13:02:02,247 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.37 sec
+MapReduce Total cumulative CPU time: 7 seconds 370 msec
+Ended Job = job_1445073781836_0023
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0024, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0024/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0024
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+2015-10-17 13:02:10,222 Stage-3 map = 0%,  reduce = 0%
+2015-10-17 13:02:16,501 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.78 sec
+2015-10-17 13:02:23,918 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 4.04 sec
+MapReduce Total cumulative CPU time: 4 seconds 40 msec
+Ended Job = job_1445073781836_0024
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4317, totalSize=157077, rawDataSize=152760]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.37 sec   HDFS Read: 6366882 HDFS Write: 238404 SUCCESS
+Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 4.04 sec   HDFS Read: 242753 HDFS Write: 157161 SUCCESS
+Total MapReduce CPU Time Spent: 11 seconds 410 msec
+OK
+Time taken: 57.604 seconds
+OK
+ZUNI COMPREHENSIVE COMMUNITY HEALTH CENTER	784.0
+YUMA REGIONAL MEDICAL CENTER	3456.0
+YUMA DISTRICT HOSPITAL	564.0
+YUKON KUSKOKWIM DELTA REG HOSPITAL	723.0
+YORK HOSPITAL	6548.0
+YORK GENERAL HOSPITAL	1021.0
+YOAKUM COMMUNITY HOSPITAL	286.0
+YAVAPAI REGIONAL MEDICAL CENTER-EAST CAMPUS	2829.0
+YAVAPAI REGIONAL MEDICAL CENTER	3025.0
+YAMPA VALLEY MEDICAL CENTER	1893.0
+Time taken: 0.133 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./best_hospitals.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 2.003 seconds
+Query ID = root_20151017130303_f272e085-f801-45c4-8068-cc13de55fb7d
+Total jobs = 2
+Execution log at: /tmp/root/root_20151017130303_f272e085-f801-45c4-8068-cc13de55fb7d.log
+2015-10-17 01:03:59	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 01:04:00	Dump the side-table for tag: 1 with group count: 4803 into file: file:/tmp/root/02c20892-1249-4fa3-a13a-ab990e57db8d/hive_2015-10-17_13-03-52_684_8317737046292104264-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable
+2015-10-17 01:04:01	Uploaded 1 File to: file:/tmp/root/02c20892-1249-4fa3-a13a-ab990e57db8d/hive_2015-10-17_13-03-52_684_8317737046292104264-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (262566 bytes)
+2015-10-17 01:04:01	End of local task; Time Taken: 1.743 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0025, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0025/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0025
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 13:04:11,578 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 13:04:20,193 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.71 sec
+2015-10-17 13:04:27,672 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.1 sec
+MapReduce Total cumulative CPU time: 7 seconds 100 msec
+Ended Job = job_1445073781836_0025
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0026, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0026/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0026
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+2015-10-17 13:04:36,811 Stage-3 map = 0%,  reduce = 0%
+2015-10-17 13:04:43,181 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.9 sec
+2015-10-17 13:04:50,599 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 4.3 sec
+MapReduce Total cumulative CPU time: 4 seconds 300 msec
+Ended Job = job_1445073781836_0026
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_hospitals
+Table default.best_hospitals stats: [numFiles=1, numRows=4317, totalSize=157077, rawDataSize=152760]
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.1 sec   HDFS Read: 6366882 HDFS Write: 238404 SUCCESS
+Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 4.3 sec   HDFS Read: 242547 HDFS Write: 157161 SUCCESS
+Total MapReduce CPU Time Spent: 11 seconds 400 msec
+OK
+Time taken: 59.279 seconds
+OK
+MEMORIAL HOSPITAL	25110.0
+ST JOSEPH HOSPITAL	21668.0
+GOOD SAMARITAN HOSPITAL	21380.0
+MERCY MEDICAL CENTER	19718.0
+MERCY HOSPITAL	19703.0
+ST JOSEPH MEDICAL CENTER	17534.0
+ST MARY'S MEDICAL CENTER	16702.0
+ST MARY MEDICAL CENTER	14455.0
+DOCTORS HOSPITAL	13092.0
+ST MARYS HOSPITAL	12582.0
+Time taken: 0.059 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_state.sql
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_state.sql 
+[root@ip-172-31-18-233 ~]# hive -f./best_state.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.538 seconds
+FAILED: ParseException line 4:3 missing EOF at '(' near 'SUM'
+[root@ip-172-31-18-233 ~]# vi best_state.sql 
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_state.sql 
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# hive -f./best_state.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.531 seconds
+Query ID = root_20151017131313_4c8ac042-b417-4cd3-9edc-462bf4b4436e
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0027, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0027/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0027
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 13:14:10,117 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 13:14:16,760 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.77 sec
+2015-10-17 13:14:24,111 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.56 sec
+MapReduce Total cumulative CPU time: 3 seconds 560 msec
+Ended Job = job_1445073781836_0027
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0028, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0028/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0028
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 13:14:33,197 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 13:14:38,658 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.32 sec
+2015-10-17 13:14:45,995 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 3.11 sec
+MapReduce Total cumulative CPU time: 3 seconds 110 msec
+Ended Job = job_1445073781836_0028
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/best_state
+Table default.best_state stats: [numFiles=1, numRows=50, totalSize=476, rawDataSize=426]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.56 sec   HDFS Read: 44954 HDFS Write: 1496 SUCCESS
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 3.11 sec   HDFS Read: 5606 HDFS Write: 551 SUCCESS
+Total MapReduce CPU Time Spent: 6 seconds 670 msec
+OK
+Time taken: 48.382 seconds
+OK
+TX	7873.0
+CA	4623.0
+PA	3556.0
+OH	3419.0
+LA	3181.0
+IL	3072.0
+IN	2753.0
+FL	2591.0
+NC	2447.0
+GA	2423.0
+Time taken: 0.142 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_state.sql 
+[root@ip-172-31-18-233 ~]# ls
+best_hospitals.sql  dans_bash_history.txt    hive_base_hospitals.sql  ipython                start-hadoop.sh   stop-hadoop.sh~
+best_state.sql      derby.log                hive_base_quality.sql    metastore_db           start-hadoop.sh~  streamparse
+csv-serde.jar       hive_base_effective.sql  hive_bash_ddl2.sql       pgxl-deployment-tools  stop-hadoop.sh    transforming.sql
+[root@ip-172-31-18-233 ~]# vi variability.sql
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+Query ID = root_20151017150101_0d6241cd-bb52-477c-9ca0-8f34af729ecd
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0029, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0029/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0029
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:02:00,111 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:02:09,673 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 5.12 sec
+2015-10-17 15:02:16,070 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 6.99 sec
+MapReduce Total cumulative CPU time: 6 seconds 990 msec
+Ended Job = job_1445073781836_0029
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 6.99 sec   HDFS Read: 61190781 HDFS Write: 468 SUCCESS
+Total MapReduce CPU Time Spent: 6 seconds 990 msec
+OK
+ACEI or ARB for LVSD	Not Available
+Anticoagulation Therapy for Atrial Fibrillation/Flutter	Not Available
+Anticoagulation overlap therapy	Not Available
+Antithrombotic Therapy by End of Hospital Day 2	Not Available
+Aspirin at Arrival	Not Available
+Aspirin prescribed at discharge	Not Available
+Assessed for Rehabilitation	Not Available
+Discharge instructions	Not Available
+Discharged on Antithrombotic Therapy	Not Available
+Discharged on Statin Medication	Not Available
+Time taken: 27.732 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+Query ID = root_20151017150404_caa7d776-fe83-456e-b721-2f2b0a62ef48
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0030, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0030/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0030
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:05:11,454 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:05:22,288 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.33 sec
+2015-10-17 15:05:29,652 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.11 sec
+MapReduce Total cumulative CPU time: 8 seconds 110 msec
+Ended Job = job_1445073781836_0030
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.11 sec   HDFS Read: 61191135 HDFS Write: 368 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 110 msec
+OK
+ACEI or ARB for LVSD	100
+Anticoagulation Therapy for Atrial Fibrillation/Flutter	100
+Anticoagulation overlap therapy	100
+Antithrombotic Therapy by End of Hospital Day 2	100
+Aspirin at Arrival	100
+Aspirin prescribed at discharge	100
+Assessed for Rehabilitation	100
+Discharge instructions	100
+Discharged on Antithrombotic Therapy	100
+Discharged on Statin Medication	100
+Time taken: 30.804 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+Query ID = root_20151017151010_c3ab051b-0deb-4410-b3e2-163caa6aca98
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0031, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0031/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0031
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:10:49,880 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:11:00,573 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.59 sec
+2015-10-17 15:11:06,905 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.43 sec
+MapReduce Total cumulative CPU time: 8 seconds 430 msec
+Ended Job = job_1445073781836_0031
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.43 sec   HDFS Read: 61191135 HDFS Write: 355 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 430 msec
+OK
+ACEI or ARB for LVSD	9
+Anticoagulation Therapy for Atrial Fibrillation/Flutter	45
+Anticoagulation overlap therapy	29
+Antithrombotic Therapy by End of Hospital Day 2	0
+Aspirin at Arrival	45
+Aspirin prescribed at discharge	38
+Assessed for Rehabilitation	26
+Discharge instructions	0
+Discharged on Antithrombotic Therapy	38
+Discharged on Statin Medication	25
+Time taken: 29.249 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.536 seconds
+FAILED: SemanticException [Error 10025]: Line 4:96 Expression not in GROUP BY key 'minScore'
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.529 seconds
+Query ID = root_20151017151919_b1d799ee-6f9c-41f8-a1d6-df6443bc8b80
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0032, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0032/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0032
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:19:32,126 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:19:42,923 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.6 sec
+2015-10-17 15:19:50,290 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.61 sec
+MapReduce Total cumulative CPU time: 8 seconds 610 msec
+Ended Job = job_1445073781836_0032
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/variability_table
+Table default.variability_table stats: [numFiles=1, numRows=49, totalSize=2440, rawDataSize=2391]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.61 sec   HDFS Read: 61191344 HDFS Write: 2523 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 610 msec
+OK
+Time taken: 29.789 seconds
+OK
+ACEI or ARB for LVSD	9	100
+Anticoagulation Therapy for Atrial Fibrillation/Flutter	45	100
+Anticoagulation overlap therapy	29	100
+Antithrombotic Therapy by End of Hospital Day 2	0	100
+Aspirin at Arrival	45	100
+Aspirin prescribed at discharge	38	100
+Assessed for Rehabilitation	26	100
+Discharge instructions	0	100
+Discharged on Antithrombotic Therapy	38	100
+Discharged on Statin Medication	25	100
+Time taken: 0.064 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.942 seconds
+Query ID = root_20151017152020_821bb98f-b6b6-4a8e-a946-805646c97470
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0033, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0033/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0033
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:21:06,362 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:21:17,067 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.37 sec
+2015-10-17 15:21:24,458 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.94 sec
+MapReduce Total cumulative CPU time: 8 seconds 940 msec
+Ended Job = job_1445073781836_0033
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/variability_table
+Table default.variability_table stats: [numFiles=1, numRows=49, totalSize=2610, rawDataSize=2561]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.94 sec   HDFS Read: 61191907 HDFS Write: 2693 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 940 msec
+OK
+Time taken: 29.276 seconds
+OK
+ACEI or ARB for LVSD	9	100	91
+Anticoagulation Therapy for Atrial Fibrillation/Flutter	45	100	55
+Anticoagulation overlap therapy	29	100	71
+Antithrombotic Therapy by End of Hospital Day 2	0	100	100
+Aspirin at Arrival	45	100	55
+Aspirin prescribed at discharge	38	100	62
+Assessed for Rehabilitation	26	100	74
+Discharge instructions	0	100	100
+Discharged on Antithrombotic Therapy	38	100	62
+Discharged on Statin Medication	25	100	75
+Time taken: 0.074 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./variability.sql 
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.955 seconds
+Query ID = root_20151017152222_1e4495a3-d167-48a1-9676-07b26ac35812
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0034, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0034/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0034
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:22:35,553 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:22:46,234 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.49 sec
+2015-10-17 15:22:52,609 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.88 sec
+MapReduce Total cumulative CPU time: 8 seconds 880 msec
+Ended Job = job_1445073781836_0034
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0035, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0035/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0035
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2015-10-17 15:23:00,452 Stage-2 map = 0%,  reduce = 0%
+2015-10-17 15:23:07,828 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.32 sec
+2015-10-17 15:23:15,272 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 3.15 sec
+MapReduce Total cumulative CPU time: 3 seconds 150 msec
+Ended Job = job_1445073781836_0035
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/variability_table
+Table default.variability_table stats: [numFiles=1, numRows=49, totalSize=2610, rawDataSize=2561]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.88 sec   HDFS Read: 61191506 HDFS Write: 3241 SUCCESS
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 3.15 sec   HDFS Read: 7798 HDFS Write: 2693 SUCCESS
+Total MapReduce CPU Time Spent: 12 seconds 30 msec
+OK
+Time taken: 51.936 seconds
+OK
+ED1	0	1140	1140
+ED2	0	753	753
+Median Time to Transfer to Another Facility for Acute Coronary Intervention	17	409	392
+OP 18	46	424	378
+Door to diagnostic eval	0	160	160
+Median time to pain med	14	167	153
+Median Time to ECG	0	114	114
+Initial antibiotic selection for CAP in immunocompetent patient	0	100	100
+Venous thromboembolism prophylaxis	0	100	100
+Venous Thromboembolism (VTE) Prophylaxis	0	100	100
+Time taken: 0.095 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# vi corr.sql
+[root@ip-172-31-18-233 ~]# hive -f ./corr.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+NoViableAltException(66@[184:1: tableName : (db= identifier DOT tab= identifier -> ^( TOK_TABNAME $db $tab) |tab= identifier -> ^( TOK_TABNAME $tab) );])
+	at org.antlr.runtime.DFA.noViableAlt(DFA.java:158)
+	at org.antlr.runtime.DFA.predict(DFA.java:116)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_FromClauseParser.tableName(HiveParser_FromClauseParser.java:4683)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.tableName(HiveParser.java:44539)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.dropTableStatement(HiveParser.java:6733)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:2379)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:1586)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1062)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:199)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:394)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:306)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1111)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1159)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1048)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1038)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:207)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:159)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:370)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:305)
+	at org.apache.hadoop.hive.cli.CliDriver.processReader(CliDriver.java:403)
+	at org.apache.hadoop.hive.cli.CliDriver.processFile(CliDriver.java:419)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:708)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:675)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:615)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:221)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:136)
+FAILED: ParseException line 2:0 cannot recognize input near 'corr_procedureTable' 'CREATE' 'TABLE' in table name
+[root@ip-172-31-18-233 ~]# vi corr.sql
+[root@ip-172-31-18-233 ~]# hive -f ./corr.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 0.534 seconds
+Query ID = root_20151017154848_802c4f54-e8db-4cf0-aff2-d029c5163fce
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0036, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0036/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0036
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:48:13,521 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:48:24,412 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.44 sec
+2015-10-17 15:48:31,889 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 9.04 sec
+MapReduce Total cumulative CPU time: 9 seconds 40 msec
+Ended Job = job_1445073781836_0036
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_proceduretable
+Table default.corr_proceduretable stats: [numFiles=1, numRows=4588, totalSize=198289, rawDataSize=193701]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 9.04 sec   HDFS Read: 61191210 HDFS Write: 198378 SUCCESS
+Total MapReduce CPU Time Spent: 9 seconds 40 msec
+OK
+Time taken: 30.859 seconds
+OK
+ HIMA SAN PABLO BAYAMON	87.52631578947368
+ABBEVILLE AREA MEDICAL CENTER	84.6
+ABBEVILLE GENERAL HOSPITAL	86.52
+ABBOTT NORTHWESTERN HOSPITAL	89.8974358974359
+ABILENE REGIONAL MEDICAL CENTER	98.48484848484848
+ABINGTON MEMORIAL HOSPITAL	94.91891891891892
+ABRAHAM LINCOLN MEMORIAL HOSPITAL	92.57142857142857
+ABRAZO ARROWHEAD CAMPUS	91.29411764705883
+ABRAZO CENTRAL CAMPUS	90.94117647058823
+ABRAZO MARYVALE CAMPUS	89.20689655172414
+Time taken: 0.06 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi corr.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./corr.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.974 seconds
+Query ID = root_20151017155454_c3963f04-2e24-4f11-ae07-2c0e724bb1e9
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0037, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0037/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0037
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 15:54:58,957 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 15:55:09,716 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.8 sec
+2015-10-17 15:55:17,094 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 9.23 sec
+MapReduce Total cumulative CPU time: 9 seconds 230 msec
+Ended Job = job_1445073781836_0037
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_proceduretable
+Table default.corr_proceduretable stats: [numFiles=1, numRows=4588, totalSize=198289, rawDataSize=193701]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 9.23 sec   HDFS Read: 61191225 HDFS Write: 198378 SUCCESS
+Total MapReduce CPU Time Spent: 9 seconds 230 msec
+OK
+Time taken: 30.163 seconds
+OK
+Time taken: 0.025 seconds
+Query ID = root_20151017155555_5e7af1d4-e7a0-49e9-8118-5c8147cee253
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017155555_5e7af1d4-e7a0-49e9-8118-5c8147cee253.log
+2015-10-17 03:55:24	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 03:55:26	Dump the side-table for tag: 1 with group count: 4588 into file: file:/tmp/root/8d533bc3-7ae1-4007-8936-0afb26cd3f10/hive_2015-10-17_15-55-18_517_6659117755393375517-1/-local-10003/HashTable-Stage-4/MapJoin-mapfile01--.hashtable
+2015-10-17 03:55:26	Uploaded 1 File to: file:/tmp/root/8d533bc3-7ae1-4007-8936-0afb26cd3f10/hive_2015-10-17_15-55-18_517_6659117755393375517-1/-local-10003/HashTable-Stage-4/MapJoin-mapfile01--.hashtable (254469 bytes)
+2015-10-17 03:55:26	End of local task; Time Taken: 1.878 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1445073781836_0038, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0038/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0038
+Hadoop job information for Stage-4: number of mappers: 1; number of reducers: 0
+2015-10-17 15:55:33,724 Stage-4 map = 0%,  reduce = 0%
+2015-10-17 15:55:41,197 Stage-4 map = 100%,  reduce = 0%, Cumulative CPU 3.19 sec
+MapReduce Total cumulative CPU time: 3 seconds 190 msec
+Ended Job = job_1445073781836_0038
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_qualitytable
+Table default.corr_qualitytable stats: [numFiles=1, numRows=3020, totalSize=145668, rawDataSize=142648]
+MapReduce Jobs Launched: 
+Stage-Stage-4: Map: 1   Cumulative CPU: 3.19 sec   HDFS Read: 1348693 HDFS Write: 145755 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 190 msec
+OK
+Time taken: 24.895 seconds
+OK
+SOUTHEAST ALABAMA MEDICAL CENTER	17	92.23684210526316
+MARSHALL MEDICAL CENTER SOUTH	51	89.8
+ELIZA COFFEE MEMORIAL HOSPITAL	9	89.34285714285714
+MIZELL MEMORIAL HOSPITAL	40	84.46428571428571
+CRENSHAW COMMUNITY HOSPITAL	30	76.4
+ST VINCENT'S EAST	11	93.27027027027027
+DEKALB REGIONAL MEDICAL CENTER	31	89.30555555555556
+SHELBY BAPTIST MEDICAL CENTER	10	94.66666666666667
+HELEN KELLER MEMORIAL HOSPITAL	24	82.88235294117646
+DALE MEDICAL CENTER	34	86.0
+Time taken: 0.056 seconds, Fetched: 10 row(s)
+[root@ip-172-31-18-233 ~]# vi corr.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./corr.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.951 seconds
+Query ID = root_20151017160000_b2db5bac-7d61-4a46-8255-7ffee6051667
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0039, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0039/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0039
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 16:00:51,964 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 16:01:02,956 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.48 sec
+2015-10-17 16:01:10,352 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 9.21 sec
+MapReduce Total cumulative CPU time: 9 seconds 210 msec
+Ended Job = job_1445073781836_0039
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_proceduretable
+Table default.corr_proceduretable stats: [numFiles=1, numRows=4588, totalSize=198289, rawDataSize=193701]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 9.21 sec   HDFS Read: 61191225 HDFS Write: 198378 SUCCESS
+Total MapReduce CPU Time Spent: 9 seconds 210 msec
+OK
+Time taken: 29.67 seconds
+OK
+Time taken: 0.1 seconds
+Query ID = root_20151017160101_4826faa1-05cb-4d4f-91d4-cc7fc3a4b11c
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017160101_4826faa1-05cb-4d4f-91d4-cc7fc3a4b11c.log
+2015-10-17 04:01:17	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 04:01:19	Dump the side-table for tag: 1 with group count: 4588 into file: file:/tmp/root/2a5df53c-70ae-4297-ab8a-80962e6ee6a1/hive_2015-10-17_16-01-11_832_6345840751127600288-1/-local-10003/HashTable-Stage-4/MapJoin-mapfile01--.hashtable
+2015-10-17 04:01:19	Uploaded 1 File to: file:/tmp/root/2a5df53c-70ae-4297-ab8a-80962e6ee6a1/hive_2015-10-17_16-01-11_832_6345840751127600288-1/-local-10003/HashTable-Stage-4/MapJoin-mapfile01--.hashtable (254469 bytes)
+2015-10-17 04:01:19	End of local task; Time Taken: 1.88 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1445073781836_0040, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0040/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0040
+Hadoop job information for Stage-4: number of mappers: 1; number of reducers: 0
+2015-10-17 16:01:27,265 Stage-4 map = 0%,  reduce = 0%
+2015-10-17 16:01:34,703 Stage-4 map = 100%,  reduce = 0%, Cumulative CPU 3.38 sec
+MapReduce Total cumulative CPU time: 3 seconds 380 msec
+Ended Job = job_1445073781836_0040
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_qualitytable
+Table default.corr_qualitytable stats: [numFiles=1, numRows=3020, totalSize=145668, rawDataSize=142648]
+MapReduce Jobs Launched: 
+Stage-Stage-4: Map: 1   Cumulative CPU: 3.38 sec   HDFS Read: 1348710 HDFS Write: 145755 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 380 msec
+OK
+Time taken: 24.06 seconds
+FAILED: UDFArgumentTypeException Only numeric type arguments are accepted but string is passed.
+[root@ip-172-31-18-233 ~]# vi corr.sql 
+[root@ip-172-31-18-233 ~]# hive -f ./corr.sql
+ls: cannot access /root/spark15/lib/spark-assembly-*.jar: No such file or directory
+
+Logging initialized using configuration in jar:file:/usr/lib/hive/lib/hive-common-1.1.0-cdh5.4.5.jar!/hive-log4j.properties
+OK
+Time taken: 1.908 seconds
+Query ID = root_20151017160202_c2eee31b-6ef7-435f-a177-66895e88e070
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0041, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0041/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0041
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 16:03:04,556 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 16:03:15,245 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 6.53 sec
+2015-10-17 16:03:22,684 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 9.16 sec
+MapReduce Total cumulative CPU time: 9 seconds 160 msec
+Ended Job = job_1445073781836_0041
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_proceduretable
+Table default.corr_proceduretable stats: [numFiles=1, numRows=4588, totalSize=198289, rawDataSize=193701]
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 9.16 sec   HDFS Read: 61191223 HDFS Write: 198378 SUCCESS
+Total MapReduce CPU Time Spent: 9 seconds 160 msec
+OK
+Time taken: 29.099 seconds
+OK
+Time taken: 0.12 seconds
+Query ID = root_20151017160303_85f66b6a-9ef7-4cfd-a6b8-81182be7ab68
+Total jobs = 1
+Execution log at: /tmp/root/root_20151017160303_85f66b6a-9ef7-4cfd-a6b8-81182be7ab68.log
+2015-10-17 04:03:29	Starting to launch local task to process map join;	maximum memory = 932184064
+2015-10-17 04:03:31	Dump the side-table for tag: 1 with group count: 4588 into file: file:/tmp/root/7e92a7bb-1d8b-4b46-9684-887e1d000b6a/hive_2015-10-17_16-03-24_197_5939702036233099652-1/-local-10003/HashTable-Stage-4/MapJoin-mapfile01--.hashtable
+2015-10-17 04:03:31	Uploaded 1 File to: file:/tmp/root/7e92a7bb-1d8b-4b46-9684-887e1d000b6a/hive_2015-10-17_16-03-24_197_5939702036233099652-1/-local-10003/HashTable-Stage-4/MapJoin-mapfile01--.hashtable (254469 bytes)
+2015-10-17 04:03:31	End of local task; Time Taken: 1.856 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1445073781836_0042, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0042/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0042
+Hadoop job information for Stage-4: number of mappers: 1; number of reducers: 0
+2015-10-17 16:03:39,609 Stage-4 map = 0%,  reduce = 0%
+2015-10-17 16:03:48,107 Stage-4 map = 100%,  reduce = 0%, Cumulative CPU 3.25 sec
+MapReduce Total cumulative CPU time: 3 seconds 250 msec
+Ended Job = job_1445073781836_0042
+Moving data to: hdfs://localhost:8020/user/hive/warehouse/corr_qualitytable
+Table default.corr_qualitytable stats: [numFiles=1, numRows=3020, totalSize=145316, rawDataSize=142296]
+MapReduce Jobs Launched: 
+Stage-Stage-4: Map: 1   Cumulative CPU: 3.25 sec   HDFS Read: 1348836 HDFS Write: 145403 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 250 msec
+OK
+Time taken: 25.085 seconds
+Query ID = root_20151017160303_385e050e-e04d-42d0-9e34-9d672b331b21
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1445073781836_0043, Tracking URL = http://ip-172-31-18-233.ec2.internal:8088/proxy/application_1445073781836_0043/
+Kill Command = /usr/lib/hadoop/bin/hadoop job  -kill job_1445073781836_0043
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2015-10-17 16:03:57,062 Stage-1 map = 0%,  reduce = 0%
+2015-10-17 16:04:03,539 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.67 sec
+2015-10-17 16:04:09,906 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.58 sec
+MapReduce Total cumulative CPU time: 3 seconds 580 msec
+Ended Job = job_1445073781836_0043
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.58 sec   HDFS Read: 152726 HDFS Write: 21 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 580 msec
+OK
+-0.23941891948182795
+Time taken: 21.685 seconds, Fetched: 1 row(s)
+[root@ip-172-31-18-233 ~]# vi corr.sql 
+[root@ip-172-31-18-233 ~]# ls
+best_hospitals.sql  csv-serde.jar          hive_base_effective.sql  hive_bash_ddl2.sql  pgxl-deployment-tools  stop-hadoop.sh   transforming.sql
+best_state.sql      dans_bash_history.txt  hive_base_hospitals.sql  ipython             start-hadoop.sh        stop-hadoop.sh~  variability.sql
+corr.sql            derby.log              hive_base_quality.sql    metastore_db        start-hadoop.sh~       streamparse
+[root@ip-172-31-18-233 ~]# vi best_hospitals.sql 
+[root@ip-172-31-18-233 ~]# vi best_state.sql 
+[root@ip-172-31-18-233 ~]# vi corr.sql 
+[root@ip-172-31-18-233 ~]# vi variability.sql 
+[root@ip-172-31-18-233 ~]# 
+Broadcast message from root@ip-172-31-18-233
+	(unknown) at 16:12 ...
+
+The system is going down for power off NOW!
+Connection to 54.84.142.229 closed by remote host.
+Connection to 54.84.142.229 closed.
+ml-20015260:~ Doran$ 

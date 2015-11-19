@@ -1,0 +1,26 @@
+Q: What states are models of high-quality care?
+
+A: 
+# Top 10 results (State names, Overall score)
+TX	7873.0
+CA	4623.0
+PA	3556.0
+OH	3419.0
+LA	3181.0
+IL	3072.0
+IN	2753.0
+FL	2591.0
+NC	2447.0
+GA	2423.0
+
+# Calculation
+I have used hcahps_base score (survey results) to measure hospital quality. Using State as a group by variable, I have summed all the score for each state from 'careQualityTable'.
+
+# Justification why this approach is appropriate
+Hcahps_base scores indicagtes hospital quality satisfaction (e.g, cleaness, quiteness, etc.). If hospitals have high score, it means that hospital has higher quality care compared to other hospitals with low score. In order to find high-quality care in the state level, I have added all the socre grouped by state. The reason I did not take average is because states with fewer hospitals may be overestimate the overall quality of the state. States with fewer hospitals mean less quality for overall population no matter how good the quality of that single hospital.
+
+# Why these results support your conclusion
+Each hospital's quality score was taken ans was grouped by state names, meaning it has the most hospitals with quality care. 
+
+# Conclusion
+TX has the highest score for quality, meaning it is the model for high-quality.

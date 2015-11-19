@@ -1,0 +1,33 @@
+Q: Are average scores for hospital quality or procedural variability correlated with patient survey responses?
+
+A: There is almost no correlation (-0.23941891948182795)
+
+# Calculation
+In order to calculate correlation between hospital quality and procedural variability, I have used the following definitions.
+Corr (x, y) = Corr (quality score, average procedure score)
+x (quality score) = survey results for each score (from quality)
+y (average procedure score) = For the purpose of this investigation, I have assumed that a greater variability is present when average procedure score is higher. 
+
+After creating a table for x, y, I ran corr function in Hive. 
+
+# Top 10 results (Hospital names, quality score, average of procedures)
+SOUTHEAST ALABAMA MEDICAL CENTER	17	92.23684210526316
+MARSHALL MEDICAL CENTER SOUTH	51	89.8
+ELIZA COFFEE MEMORIAL HOSPITAL	9	89.34285714285714
+MIZELL MEMORIAL HOSPITAL	40	84.46428571428571
+CRENSHAW COMMUNITY HOSPITAL	30	76.4
+ST VINCENT'S EAST	11	93.27027027027027
+DEKALB REGIONAL MEDICAL CENTER	31	89.30555555555556
+SHELBY BAPTIST MEDICAL CENTER	10	94.66666666666667
+HELEN KELLER MEMORIAL HOSPITAL	24	82.88235294117646
+DALE MEDICAL CENTER	34	86.0
+
+# Justification why this approach is appropriate
+In this investigation, we are calculation correlation at the hospital level. 
+
+# Why these results support your conclusion
+The correlation resulted in -0.23 which indicates that there is little or no correlation between patient satisfaction level (=care quality) and procedure quality.
+
+# Conclusion
+The results shows that quality (=patient satisfaction) is not highly correlated to procedure quality
+
